@@ -5,17 +5,18 @@ with predetermined examples to make sure the results are as desired.
 import qoptics_matrices as qo
 import numpy as np
 
+dim = 4
+
 print("Generating two random passive transformations:")
-pas1 = qo.random_passive(4)
+pas1 = qo.random_passive(dim)
 print(pas1)
-pas2 = qo.random_passive(4)
-np.set_printoptions(precision=10)
+pas2 = qo.random_passive(dim)
 print(pas2)
 print("Check that both are valid passive transformations:", qo.check_valid_passive(pas1), qo.check_valid_passive(pas2))
 print('\n')
 
 print("Generating random squeeze:")
-rsq = qo.random_squeezing(4)
+rsq = qo.random_squeezing(dim)
 print(rsq)
 print('\n')
 
@@ -26,7 +27,7 @@ print("Check if valid symplectic matrix:", qo.check_valid_symplectic(rand_sp))
 print('\n')
 
 print("Generating covariance matrix of random thermal state:")
-rand_therm = qo.random_thermal_state(4)
+rand_therm = qo.random_thermal_state(dim)
 print(rand_therm)
 print('\n')
 
@@ -37,6 +38,6 @@ print("Check if valid covariance matrix (for Williamson decomposition):", qo.che
 print('\n')
 
 print("Generating a second symplectic matrix:")
-rand_sp2 = qo.random_symplectic(4)
+rand_sp2 = qo.random_symplectic(dim)
 print(rand_sp2)
 print("Check if valid symplectic matrix:", qo.check_valid_symplectic(rand_sp))

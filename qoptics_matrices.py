@@ -48,6 +48,19 @@ def random_symplectic(dim : int):
 
     return sp.linalg.expm(lie_algebra_matrix)
 
+def fix_symplectic(symp_m : np.ndarray):
+    s_form = get_symplectic_form(len(symp_m))
+    id_mat = np.identity(len(symp_m))
+    v_matrix = s_form @ (id_mat - symp_m) @ np.linalg.inv(id_mat + symp_m)
+    w_matrix = (v_matrix + v_matrix.T) / 2
+    if np.linalg.det(id_mat - (s_form @ w_matrix)) != 0:
+        m_matrix = (id_mat + (s_form @ w_matrix) ) @ np.linalg.inv(id_mat - (s_form @ w_matrix) )
+        return m_matrix
+    v_matrix = s_form @ (id_mat + symp_m) @ np.linalg.inv(id_mat - symp_m)
+    w_matrix = (v_matrix + v_matrix.T) / 2
+    m_matrix = (id_mat + (s_form @ w_matrix) ) @ np.linalg.inv(id_mat - (s_form @ w_matrix) )
+    return m_matrix
+
 def random_passive(dim : int):
     """
     This function generates a matrix with shape dim x dim which corresponds to some

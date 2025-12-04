@@ -254,7 +254,7 @@ def check_valid_symplectic(input_matrix : np.ndarray):
     Because of floating point errors this will almost never be exactly the case
     we will use the numpy function allclose to see if the resulting matrix is
     close enough to the original symplectic form. The default tolerance is around
-    0.0e^(-8).
+    1.0e(-8).
     INPUT:
     input_matrix - Matrix to be checked.
     OUTPUT:
@@ -281,7 +281,7 @@ def check_valid_orthogonal(input_matrix : np.ndarray):
     Because of floating point errors this will almost never be exactly the case
     we will use the numpy function allclose to see if the resulting matrix is
     close enough to the original symplectic form. The default tolerance is around
-    0.0e^(-8).
+    1.0e(-8).
     INPUT:
     input_matrix - Matrix to be checked.
     OUTPUT:
